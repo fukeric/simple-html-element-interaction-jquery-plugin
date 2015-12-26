@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        
+        <script src="./resources/scripts/jquery-1.11.3.min.js"></script> 
+        
+        <script src="./resources/scripts/Matrix.js"></script>
+        <script src="./resources/scripts/DragManager.js"></script>
+        <script src="./resources/scripts/ResizeManager.js"></script>
+        <script src="./resources/scripts/RotateManager.js"></script>
+        
+        <script src="./resources/scripts/jquery.editable.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                
+                $('#One').editable({
+                    resizable: true,
+                    rotatable: true,
+                    draggable: true,
+                });
+                
+                $('#Two').editable({
+                    resizable: false,
+                    rotatable: true,
+                    draggable: true,
+                });
+                
+                $('#Three').editable({
+                    resizable: true,
+                    rotatable: false,
+                    draggable: true,
+                });
+                
+                $('#Four').editable({
+                    resizable: false,
+                    rotatable: false,
+                    draggable: true,
+                });
+            });
+        </script>
+        <style type="text/css">
+            
+            body {
+                background: #000;
+            }
+
+            body > div { 
+                width: 100px;
+                height: 100px;
+                transform-origin: 0% 0%; 
+                background: #777; 
+                color: white;
+            }  
+            
+            .rotateHandler:after {
+                content: "";
+                position: absolute;
+                width: 2px;
+                height: 18px;
+                background: #5BB6F3;
+                top: 10px;
+                left: 50%;
+                margin-left: -1px;
+            }
+            
+            .rotateHandler { 
+                position: absolute;
+                top: -30px;
+                left: 50%;
+                width: 8px;
+                height: 8px;
+                margin-left: -6px;
+                cursor: pointer; 
+                border-radius: 100%;
+                background: #5BB6F3;
+                border: 2px solid #fff;
+                box-shadow: 0 1px 1px rgba(0,0,0,.3);
+            }
+            
+            .degreePrinter,
+            .widthPrinter,
+            .heightPrinter { 
+                text-align: center;
+                display: block;
+                width: 40px;
+                position: absolute;
+                margin-left: -20px;
+                border: none;
+                border-radius: 2px;
+                font-size: 12px;
+                color: #000;
+                background-color: rgba(255,255,255,.7);
+                height: 15px;
+                line-height: 15px;
+                margin-top: -9.5px;
+            }
+            
+            .degreePrinter {
+                top: -45px;
+                left: 50%;
+            }
+            
+            .widthPrinter { 
+                bottom: -30px;
+                left: 50%;
+            }
+            
+            .heightPrinter { 
+                right: -55px;
+                top: 50%;
+            } 
+            
+            .resizeHandler {
+                position: absolute;
+                width: 6px;
+                height: 6px;
+                background: #5BB6F3;
+                border: 2px solid #fff;
+                box-shadow: 0 1px 1px rgba(0,0,0,.3);
+            }
+            
+            .resizeHandler.bottomLeftHandler    { bottom: -10px; left: -10px; }
+            .resizeHandler.bottomCenterHandler  { bottom: -10px; margin: 0 auto; left: 0; right: 0; }
+            .resizeHandler.bottomRightHandler   { bottom: -10px; right: -10px; }
+            
+            .resizeHandler.centerLeftHandler    { left: -10px; margin: auto 0; bottom: 0; top: 0; }
+            .resizeHandler.centerRightHandler   { right: -10px; margin: auto 0; bottom: 0; top: 0; }
+            
+            .resizeHandler.topLeftHandler       { top: -10px; left: -10px; }
+            .resizeHandler.topCenterHandler     { top: -10px; margin: 0 auto; left: 0; right: 0; }
+            .resizeHandler.topRightHandler      { top: -10px; right: -10px; }
+             
+        </style>
+    </head>
+    <body>
+        
+        <div id="One" style="top: 100px; left: 50px;">
+            Draggable<br/>
+            Resizable<br/>
+            Rotatable
+        </div>
+
+        <div id="Two" style="top: 100px; left: 250px;">
+            Draggable<br/>
+            Rotatable
+        </div>
+        <div id="Three" style="top: 300px; left: 50px;">
+            Draggable<br/>
+            Resizable
+        </div>
+        <div id="Four" style="top: 300px; left: 250px;">
+            Draggable
+        </div>
+
+    </body>
+</html>
