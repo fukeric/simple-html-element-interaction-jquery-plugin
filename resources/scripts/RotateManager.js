@@ -66,7 +66,6 @@
             }
             
             function mouseMove(event) {
-                // 중심점 구하기
                 var boundBox = element.getBoundingClientRect(); 
                 
                 var centerX = boundBox.left + (boundBox.width / 2);
@@ -76,13 +75,13 @@
                 var height = $(element).height(); 
                 
                 var angle = (moveAngle - pressAngle) + context.angle;
-                var degree = Math.round(angle * (180 / Math.PI)); 
+                var degree = (angle > 0 ? angle : (2 * Math.PI + angle)) * 360 / (2 * Math.PI);
                 
                 element.style.transform = getCurrentMatrix().setRotation(angle, [ width / 2, height / 2 ]).toCSSTransform();
                 
                 moveAngle = Math.atan2(event.pageY - centerY, event.pageX - centerX);
                 
-                degreePrinter.text(degree);
+                degreePrinter.text(Math.round(degree));
             }
             
             rotateHandler.bind('mousedown', mousePress)
